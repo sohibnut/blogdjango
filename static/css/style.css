@@ -44,7 +44,8 @@ body {
 /*header section*/
 .hero_area {
   height: 100vh;
-  background-image: url(../images/hero-bg.jpg);
+  background-image: url(../images/wallhaven-l3zmwy.png);
+  background-color: #000000;
   background-size: cover;
 }
 
