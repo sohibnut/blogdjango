@@ -1,7 +1,7 @@
 body {
   font-family: 'Poppins', sans-serif;
-  color: #0c0c0c;
-  background-color: #ffffff;
+  color: #f0f0f0;
+  background-color: #010402;
 }
 
 .layout_padding {
@@ -36,16 +36,15 @@ body {
 
 .heading_container h2 {
   font-weight: bold;
-  color: #050000;
+  color: #e93f1a;
   padding: 3px 10px;
-  border-bottom: 1px solid #000000;
+  border-bottom: 1px solid #e9dede;
 }
 
 /*header section*/
 .hero_area {
   height: 100vh;
   background-image: url(../images/wallhaven-l3zmwy.png);
-  background-color: #000000;
   background-size: cover;
 }
 
@@ -136,7 +135,7 @@ a:focus {
 /*end header section*/
 /* slider section */
 .slider_section {
-  height: calc(100% - 80px);
+  height: 95vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -304,7 +303,7 @@ a:focus {
 }
 
 .body_bg {
-  background-image: url(../images/body_bg.jpg);
+  background-image: url(../images/body_bg.png);
   background-size: cover;
 }
 
@@ -371,7 +370,7 @@ a:focus {
 }
 
 .contact_section .contact_bg {
-  background-color: #ffffff;
+  background-color: #010402;
 }
 
 .contact_section .heading_container {
@@ -547,7 +546,7 @@ a:focus {
 }
 
 .client_section .carousel-indicators li.active {
-  background-color: #000;
+  background-color: #279c4e;
 }
 
 /* end client_section */
