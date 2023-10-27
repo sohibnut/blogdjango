@@ -88,18 +88,14 @@
         </h2>
       </div>
       <div class="box">
-        <a href="" class="img-box">
-          <img src={% static "images/location.png" %} alt="" class="img-1">
-          <img src={% static "images/location-o.png" %} alt="" class="img-2">
+      {% for con in contact %}
+        <a href={{con.url}} class="img-box">
+          <img src={{con.icon.url}} alt="" class="img-1" width="50">
+          <img src={{con.icon.url}} alt="" class="img-2" width="50">
+          
         </a>
-        <a href="" class="img-box">
-          <img src="images/call.png" alt="" class="img-1">
-          <img src="images/call-o.png" alt="" class="img-2">
-        </a>
-        <a href="" class="img-box">
-          <img src="images/envelope.png" alt="" class="img-1">
-          <img src="images/envelope-o.png" alt="" class="img-2">
-        </a>
+      {% endfor %}
+        
       </div>
     </div>
 

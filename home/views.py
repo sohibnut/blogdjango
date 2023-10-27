@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Banner, Aboutus
+from .models import Banner, Aboutus, Service, Comment
 from .forms import ContactForm
 
 # Create your views here.
@@ -7,6 +7,7 @@ def homePage(request):
     contactForm = ContactForm(request.POST)
     if request.POST and contactForm.is_valid():
         contactForm.save()
+
 
 
     bans = Banner.objects.all().order_by("-publish_time")
@@ -19,12 +20,32 @@ def homePage(request):
     about = about[0]
 
 
+    services = Service.objects.all().order_by("-time")
+    if len(services) > 4:
+        services = services[:4]
+
+    comments = Comment.objects.all().order_by("-time")
+    if len(comments) > 3:
+        services = services[:3]
+    
+
+    wser = []
+    for x in range(len(services)):
+        if x%2==0:
+            wser.append([]) 
+        wser[-1].append(services[x])
+
+    
+
+    print(wser)            
 
     context = {
         "bans": bans,
         "about": about,
-
+        "services": wser,
+        "comments": comments,
     }
+
     return render(request, 'index.html', context)
 
 def aboutPage(request):
@@ -39,12 +60,29 @@ def aboutPage(request):
     return render(request, 'about.html', context)
 
 def servicePage(request):
-    context = {
+    services = Service.objects.all().order_by("-time")
 
+
+    wser = []
+    eee = True
+    for x in range(len(services)):
+        if x%2==0:
+            wser.append([])
+            eee = False
+        else:
+            eee = True    
+        wser[-1].append(services[x])
+
+    context = {
+        "services": wser,
     }
     return render(request, 'service.html', context)
 
 def contactPage(request):
+    contactForm = ContactForm(request.POST)
+    if request.POST and contactForm.is_valid():
+        contactForm.save()
+
     context = {
 
     }

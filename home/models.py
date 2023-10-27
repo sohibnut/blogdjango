@@ -40,3 +40,14 @@ class Service(models.Model):
 
     def __str__(self) -> str:
         return self.title
+    
+class Contact(models.Model):
+    icon = models.ImageField(upload_to="images/icons/")
+    url = models.URLField()
+
+    def __str__(self) -> str:
+        return self.url
+    
+
+
+
