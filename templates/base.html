@@ -33,6 +33,7 @@
 </head>
 
 <body  class="sub_page">
+
   <div class="hero_area">
     <!-- header section strats -->
     <header class="header_section">
@@ -73,7 +74,12 @@
       </div>
     </header>
     <!-- end header section -->
-
+    {% for message in messages %}
+        <div class="alert alert-danger">
+            <a class="close" href="#" data-dismiss="alert">×</a>
+            {{ message }}
+        </div>
+    {% endfor %}
     {% block content %}
     
     {% endblock content %}
