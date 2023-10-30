@@ -1,54 +1,50 @@
 from django.shortcuts import render
 from .models import Banner, Aboutus, Service, Comment
 from .forms import ContactForm
-from django.contrib import messages
 
 # Create your views here.
 def homePage(request):
-    a = contactPage(request)
-      
+    contactForm = ContactForm(request.POST)
+    if request.POST and contactForm.is_valid():
+        contactForm.save()
 
 
 
     bans = Banner.objects.all().order_by("-publish_time")
-    ban_elements = 3 # count of elements to show in banner
-    if len(bans) > ban_elements:
-        bans = bans[:ban_elements]
+    elements = 3
+    if len(bans) > elements:
+        bans = bans[:elements]
 
 
     about = Aboutus.objects.all().order_by("-time")
-    about = about[0] # we get just last published about article
+    if about:
+        about = about[0]
 
 
     services = Service.objects.all().order_by("-time")
-    ser_elements = 4 # count of elements to show in service section
-    if len(services) > ser_elements:
-        services = services[:ser_elements]
+    if len(services) > 4:
+        services = services[:4]
+
+    comments = Comment.objects.all().order_by("-time")
+    if len(comments) > 3:
+        services = services[:3]
+    
+
     wser = []
     for x in range(len(services)):
         if x%2==0:
             wser.append([]) 
         wser[-1].append(services[x])
 
-
-    comments = Comment.objects.all().order_by("-time")
-    com_elements = 5 # count of comments to show
-    if len(comments) > com_elements:
-        comments = comments[:com_elements]
-    comments_id = range(len(comments)) 
-
-
-
-
     
-         
+
+    print(wser)            
 
     context = {
         "bans": bans,
         "about": about,
         "services": wser,
         "comments": comments,
-        "comments_id": comments_id,
     }
 
     return render(request, 'index.html', context)
@@ -81,13 +77,8 @@ def servicePage(request):
 
 def contactPage(request):
     contactForm = ContactForm(request.POST)
-    if request.POST:
-        if contactForm.is_valid():
-            contactForm.save()
-        else:
-            print(contactForm.errors.keys())
-            messages.error(request, contactForm.errors)
-       
+    if request.POST and contactForm.is_valid():
+        contactForm.save()
 
     context = {
 
