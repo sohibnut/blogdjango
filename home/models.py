@@ -34,6 +34,7 @@ class Aboutus(models.Model):
     
 class Service(models.Model):
     title = models.CharField(max_length=40)
+    desc = models.TextField()
     body = models.TextField()
     time = models.DateTimeField(auto_now=True)
     icon = models.ImageField(upload_to="images/", blank=True)

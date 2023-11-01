@@ -32,9 +32,9 @@
                 {{it.title}}
               </h4>
               <p>
-                {{it.body}}
+                {{it.desc}}
               </p>
-              <a href={% url 'service' %}>
+              <a href={% url 'detail' it.id %}>
                 Read More
               </a>
             </div>

@@ -44,7 +44,6 @@ def homePage(request):
 
     return render(request, 'index.html', context)
 
-
 def aboutPage(request):
     elements = 10
     abouts = Aboutus.objects.all().order_by("-time")
@@ -87,3 +86,10 @@ def contactPage(request):
 
     }
     return render(request, 'contact.html', context)
+
+def serviceDetailPage(request, id: int):
+    data = Service.objects.get(id=id)
+    context = {
+        "ser": data,
+    }
+    return render(request, "service_det.html", context)

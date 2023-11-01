@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load static %}
+ {% block content %}
+
+
+  </div>
+
+  <div class="body_bg layout_padding">
+
+    <!-- service section -->
+
+        <section class="service_section ">
+      <div class="container">
+        <div class="heading_container">
+          <h2>
+            {{ser.title}}
+          </h2>
+        </div>
+      </div>
+      <div class="container">
+      <h4 style="text-align: center;">
+        {{ser.desc}}
+      </h4>
+      <br><br><br>
+      <p>
+        {{ser.body}}
+      </p>
+      
+
+        
+          
+        
+        
+      </div>
+    </section>
+
+    <!-- end service section -->
+
+  </div>
+ 
+
+{% endblock content %}
