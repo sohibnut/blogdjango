@@ -1,8 +1,13 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Banner, Aboutus, Service, Comment
 from .forms import ContactForm
 from django.contrib import messages
+
 # Create your views here.
+
+def redPage(request):
+    return redirect('home/')
+
 def homePage(request):
     a = contactPage(request)
       
@@ -78,7 +83,7 @@ def contactPage(request):
         if contactForm.is_valid():
             contactForm.save()
         else:
-            print(contactForm.errors.keys())
+            print(contactForm.errors)
             messages.error(request, contactForm.errors)
        
 
